@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState } from 'react'
+import User from './user'
 
 export default function useUser() {
   const getUser = () => {
     const userString = sessionStorage.getItem('user');
-    return JSON.parse(userString);
+
+    let user = new User()
+    if (userString == null) {
+      return user
+    }
+
+    user.name = JSON.parse(userString).name
+    user.email = JSON.parse(userString).email
+
+    return user;
   };
 
   const [user, setUser] = useState(getUser());
 
-  const saveUser = user => {
+  const saveUser = (user: User ) => {
     sessionStorage.setItem('user', JSON.stringify(user));
     setUser(user);
   };

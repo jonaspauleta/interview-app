@@ -4,6 +4,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useLocation } from "react-router-dom"
 import useUser from "../useUser"
+import User from "../user"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
@@ -30,15 +31,6 @@ export default function Layout({ children }: any) {
   const userNavigation = [
     { name: 'Logout', href: '/logout' },
   ]
-
-  let usr:any = null
-  if (user != null) {
-    usr = {
-      name: user.name,
-      email: user.email,
-      imageUrl: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg',
-    }
-  }
 
   return (
     <div className="min-h-full">
@@ -72,7 +64,7 @@ export default function Layout({ children }: any) {
                     </div>
                   </div>
                   {
-                    usr ?
+                    user && user.name != '' && user.email != '' ?
                     <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
                       {/* Profile dropdown */}
@@ -80,7 +72,7 @@ export default function Layout({ children }: any) {
                         <div>
                           <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                             <span className="sr-only">Open user menu</span>
-                            <img className="h-8 w-8 rounded-full" src={usr.imageUrl} alt="" />
+                            <img className="h-8 w-8 rounded-full" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg" alt="" />
                           </Menu.Button>
                         </div>
                         <Transition
@@ -147,14 +139,14 @@ export default function Layout({ children }: any) {
                   ))}
                 </div>
                 {
-                  usr ? (<div className="pt-4 pb-3 border-t border-gray-700">
+                  user && user.name != '' && user.email != '' ? (<div className="pt-4 pb-3 border-t border-gray-700">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={usr.imageUrl} alt="" />
+                      <img className="h-10 w-10 rounded-full" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-photo-183042379.jpg" alt="" />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">{usr.name}</div>
-                      <div className="text-sm font-medium leading-none text-gray-400">{usr.email}</div>
+                      <div className="text-base font-medium leading-none text-white">{user.name}</div>
+                      <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
                     </div>
                   </div>
                   <div className="mt-3 px-2 space-y-1">

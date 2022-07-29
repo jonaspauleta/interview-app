@@ -3,6 +3,7 @@ import axios from "axios"
 import { Navigate } from "react-router-dom"
 import useToken from "../useToken"
 import useUser from "../useUser"
+import User from "../user"
 
 export default function Logout() {
     const { token, setToken } = useToken();
@@ -15,10 +16,8 @@ export default function Logout() {
             'Authorization': "Bearer " + useToken().token
         },
     }).then((resp: any) => {
-        console.log(resp)
-
-        setToken(null)
-        setUser(null)
+        setToken('')
+        setUser({name: '', email:''})
     }).catch((err: any) => {
         console.log(err)
     })
