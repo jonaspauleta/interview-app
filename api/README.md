@@ -1,2 +1,7 @@
-<p>composer install</p>
-<p>./vendor/bin/sail up -d</p>
+# Backend setup
+
+```sh
+composer install
+./vendor/bin/sail up -d
+./vendor/bin/sail artisan migrate:fresh --seed
+```
