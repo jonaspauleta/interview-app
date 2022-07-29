@@ -1,11 +1,6 @@
 import React, { useState } from "react"
 
-interface TableRowProps {
-    time: string
-    day: string
-}
-
-export default function TableRow ({time,day}:TableRowProps) {
+export default function TableRow () {
     const [active, setActive] = useState(false)
 
     const handleClick = () => {
@@ -14,12 +9,6 @@ export default function TableRow ({time,day}:TableRowProps) {
 
     return  (
         <td className='border' onClick={handleClick}>
-            <input
-                name={time.toString + '_' + day.toString}
-                className="text-center"
-                type="checkbox"
-                onChange={handleClick}
-            />
         </td>
     )
 }

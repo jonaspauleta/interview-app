@@ -49,12 +49,14 @@ export default function Table() {
             </tbody>
           </table>
 
-          <button
-            type="submit"
-            className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#3d3f6e] hover:bg-[#282957]"
-          >
-            Save
-          </button>
+          <div className="mt-8 px-32">
+            <button
+              type="submit"
+              className="w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#3d3f6e] hover:bg-[#282957]"
+            >
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </Layout>
