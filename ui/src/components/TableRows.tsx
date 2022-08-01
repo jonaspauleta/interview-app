@@ -1,10 +1,14 @@
 import React from "react"
 import TableRow from "./TableRow"
+import Slots from '../slots'
+import { times, days } from '../settings'
 
-export default function TableRows () {
-    const times = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    const weekDays = [0, 1, 2, 3, 4]
+interface TableRowsProps {
+    slots: Slots[]
+    setSlots: React.Dispatch<React.SetStateAction<Slots[]>>
+}
 
+export default function TableRows ({ slots, setSlots }: TableRowsProps) {
     return (
         <>
             {times.map((time) => (
@@ -14,8 +18,8 @@ export default function TableRows () {
                         </th>
 
                         {
-                            weekDays.map((weekDay) => (
-                                <TableRow key={weekDay} />
+                            days.map((day) => (
+                                <TableRow key={day} slots={slots} setSlots={setSlots} time={time} day={day} />
                             ))
                         }
                     </tr>

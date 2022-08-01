@@ -4,15 +4,13 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { useLocation } from "react-router-dom"
 import useUser from "../useUser"
-import User from "../user"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
 
 export default function Layout({ children }: any) {
-  const { user, setUser } = useUser();
-
+  const { user, setUser } = useUser()
   const location = useLocation()
 
   const navigation = [

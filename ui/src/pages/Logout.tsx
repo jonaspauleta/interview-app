@@ -6,8 +6,8 @@ import useUser from "../useUser"
 import User from "../user"
 
 export default function Logout() {
-    const { token, setToken } = useToken();
-    const { user, setUser } = useUser();
+    const { token, setToken } = useToken()
+    const { user, setUser } = useUser()
 
     axios.post('/api/logout', null, {
         baseURL: import.meta.env.VITE_API_ENDPOINT,
@@ -17,7 +17,7 @@ export default function Logout() {
         },
     }).then((resp: any) => {
         setToken('')
-        setUser({name: '', email:''})
+        setUser({id: 0, name: '', email:''})
     }).catch((err: any) => {
         console.log(err)
     })

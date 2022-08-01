@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import axios from "axios"
-import useToken from "../useToken";
-import useUser from "../useUser";
+import useToken from "../useToken"
+import useUser from "../useUser"
 import Layout from "../layout/Layout"
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { token, setToken } = useToken();
-  const { user, setUser } = useUser();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { token, setToken } = useToken()
+  const { user, setUser } = useUser()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
     axios.post('/api/login', {
         email: email,
@@ -30,7 +30,7 @@ export default function Login() {
     }).catch((err: any) => {
         console.log(err)
     })
-  };
+  }
 
   return (
     <Layout>

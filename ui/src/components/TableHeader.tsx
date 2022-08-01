@@ -1,8 +1,7 @@
 import React from "react"
+import { headers } from "../settings"
 
 export default function TableHeader () {
-    const headers = ['Time', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-
     return (
         <tr>
             {headers.map((element) => (
